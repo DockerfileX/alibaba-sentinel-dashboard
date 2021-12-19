@@ -13,6 +13,11 @@ LABEL description="Alibaba Sentinel DashBoard"
 
 COPY ./sentinel-dashboard-${VERSION}.jar /usr/local/myservice/myservice.jar
 
-# 系统属性
+# 服务器端口号
 ENV PORT=8080
-ENV SYS_PROP="-Dserver.port=${PORT} -Dcsp.sentinel.dashboard.server=localhost:${PORT} -Dproject.name=sentinel-dashboard"
+# 登录用户名称
+ENV USER_NAME=sentinel
+# 登录用户密码
+ENV USER_PSWD=sentinel
+# 系统属性
+RUN sed -i '1i\SYS_PROP="-Dserver.port=${PORT} -Dcsp.sentinel.dashboard.server=localhost:${PORT} -Dsentinel.dashboard.auth.username=${USER_NAME} -Dsentinel.dashboard.auth.password=${USER_PSWD} -Dproject.name=sentinel-dashboard"' entrypoint.sh
