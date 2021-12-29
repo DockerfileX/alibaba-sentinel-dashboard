@@ -39,9 +39,9 @@ services:
       - "38080:8080"
     environment:
       # 登录用户名称
-      - USER_NAME: sentinel
+      - USER_NAME=sentinel
       # 登录用户密码 
-      - USER_PSWD: sentinel
+      - USER_PSWD=sentinel
 
 networks:
   default:
